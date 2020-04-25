@@ -1,5 +1,78 @@
-{% extends "base.html" %}
+{% extends "base2.html" %}
 {% block content %}
 {% load static %}
+
+<div id="app1" style='margin-top: 15%;'>
+    <div class="container">
+        <form method='POST' action='#'>
+            {% csrf_token %}
+            {% comment %} {% for message in messages %}
+            <label style="color: red;"><i>message</i></label>
+            {% endfor %} {% endcomment %}
+
+            <div>
+                <button class="button btn btn-primary" type="submit" name="addcart" value="borrow">ยืมพัสดุ</button>
+
+                <!-- Button trigger modal -->
+                <button type="button" style="margin-left: 0.5em;" class="btn btn-primary" data-toggle="modal"
+                    data-target="#reserve-popup">จองพัสดุ</button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="reserve-popup" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalCenterTitle">ระบุวันที่สำหรับการจอง</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span></button>
+                            </div>
+                            <!-- Modal Body-->
+                            <div class="modal-body">
+                                <div class="col-md-12" style="padding: 15px; text-align: center;">
+                                    <p>วันที่จอง:</p>
+                                    <form action="">
+                                        <input type="date" name="borrow_date">
+                                    </form>
+                                    <p style="color: red;">จองล่วงหน้าได้ไม่เกิน 3 วัน</p>
+                                </div>
+                            </div>
+                            <!-- Modal Footer-->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="button btn btn-primary" name="addcart"
+                                    value="reserve">ยืนยันการจอง</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal -->
+                <div class="row">
+                    {% comment %} {% for item in item_list %} {% endcomment %}
+                    <div class="col-md-3">
+                        <div class="card my-3">
+                            {% comment %} {% if item.item_image %} {% endcomment %}
+                                <img src="{% static 'img/scissors.jpg' %}" class="card-img-top img-fluid"> 
+                            {% comment %} {% endif %} {% endcomment %}
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <input type="checkbox" name="item" value=""> กรรไกร
+                                </h5>
+                                <p>จำนวนที่มี: 1 ชิ้น</p>
+                                {% comment %} {% if item.reserve_status == '02' %} {% endcomment %}
+                                สามารถจองพัสดุได้
+                                {% comment %} {% else %} {% endcomment %}
+                                <br>
+                                {% comment %} {% endif %} {% endcomment %}
+                            </div>
+                        </div>
+                    </div>
+                    {% comment %} {% endfor %} {% endcomment %}
+                </div>
+            </div><br>
+        </form>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.22/dist/vue.js"></script>
 
 {% endblock %}
