@@ -30,7 +30,3 @@ def login(request):
 def log_out(request):
     auth.logout(request)
     return redirect('login')
-
-
-def index(request):
-    return render(request, template_name='index.html')
