@@ -11,8 +11,8 @@ def index(request):
     if not request.user.is_authenticated:
         return redirect('/')
 
-    # item_list = Item.objects.get()
-    # context = {
-    #     'item_list': item_list,
-    # }
-    return render(request, 'index.html')
+    item_list = Item.objects.all()
+    context = {
+        'item_list': item_list,
+    }
+    return render(request, 'index.html', context)

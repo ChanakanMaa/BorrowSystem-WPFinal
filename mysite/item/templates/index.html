@@ -14,23 +14,22 @@
                 <button class="button btn btn-primary" type="submit" name="addcart" value="borrow">ยืมพัสดุ</button>
 
                 <div class="row">
-                    {% comment %} {% for item in item_list %} {% endcomment %}
+                    {% for item in item_list %}
                     <div class="col-md-3">
                         <div class="card my-3">
-                            {% comment %} {% if item.item_image %} {% endcomment %}
-                                <img src="{% static 'img/scissors.jpg' %}" class="card-img-top img-fluid"> 
-                            {% comment %} {% endif %} {% endcomment %}
+                            {% if item.item_image %}
+                                <img src="{{item.item_image.url}}" class="card-img-top img-fluid"> 
+                            {% endif %}
                             <div class="card-body">
                                 <h5 class="card-title">
-                                    <input type="checkbox" name="item" value=""> กรรไกร
+                                    <input type="checkbox" name="item" value=""> {{ item.item_name }}
                                 </h5>
-                                <p>จำนวนที่มี: 1 ชิ้น</p>
+                                <p>จำนวนที่มี: {{ item.current_amount }} ชิ้น</p>
                                 <br>
-                                {% comment %} {% endif %} {% endcomment %}
                             </div>
                         </div>
                     </div>
-                    {% comment %} {% endfor %} {% endcomment %}
+                    {% endfor %}
                 </div>
             </div><br>
         </form>
