@@ -16,7 +16,9 @@ Including another URLconf
 from django import views
 from django.contrib import admin
 from django.urls import include, path
-
+admin.autodiscover()
+from django.conf import settings
+from django.conf.urls.static import static
 from authen import views
 
 urlpatterns = [
@@ -24,4 +26,4 @@ urlpatterns = [
 
     path('', include('authen.urls')),
     path('index/', include('item.urls')),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

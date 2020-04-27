@@ -7,9 +7,10 @@ from item.models import Item
 
 # Create your views here.
 def index(request):
-    # username = None
-    # if not request.user.is_authenticated:
-    #     return redirect('')
+    username = None
+    if not request.user.is_authenticated:
+        return redirect('/')
+
     # item_list = Item.objects.get()
     # context = {
     #     'item_list': item_list,
