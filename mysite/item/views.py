@@ -1,11 +1,14 @@
 from builtins import object
+from fnmatch import filter
 from venv import create
 
+# def upload_list(request):
+from astroid.scoped_nodes import objects
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.core.files.storage import FileSystemStorage
 from django.http import Http404, HttpResponse
 from django.shortcuts import HttpResponseRedirect, redirect, render
-from django.core.files.storage import FileSystemStorage
 
 from item.forms import ItemForm, ItemSearchForm
 from item.models import Item
@@ -51,13 +54,17 @@ def create(request):
 
 
 def item_delete(request):
-    form = ItemSearchForm()
+    form = ItemSearchForm(request.GET)
 
-    item_list = Item.objects.all()
-    context = {
-        'item_list': item_list,
-    }
-    return render(request, 'item_delete.html', {'form':form})
+    if form.is_valid():
+        item_name = form.cleaned_data['item_name']
 
+        item_list = Item.objects.filter(item_name__icontains=item_name)
+    else:
+        item_list = []
 
-# def upload_list(request):
+    # item_list = Item.objects.all()
+    # context = {
+    #     'item_list': item_list,
+    # }
+    return render(request, 'item_delete.html', {'form':form, 'item_list': item_list})

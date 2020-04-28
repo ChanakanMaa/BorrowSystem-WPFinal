@@ -43,7 +43,7 @@
                                                                         </form> {% endcomment %}
                                                                         <div class="container">
                                                                         <br/><br/>
-                                                                            <form class="form-inline" method="GET" action="{% url 'index' %}">
+                                                                            <form class="form-inline" method="GET" action="{% url 'item_delete' %}">
                                                                                 <h4 style='margin-right:5%'>{{ form.item_name.label }}</h4>
                                                                                 <div class='row'>
                                                                                     <div class='col'>
@@ -72,12 +72,16 @@
                                                                                     </tr>
                                                                                 </thead>
                                                                                 <tbody>
-                                                                                {% for poll in poll_list %}
+                                                                                {% for item in item_list %}
                                                                                     <tr>
-                                                                                        <td>{{ poll.title }}</td>
-                                                                                        <td>{{ poll.start_date }}</td>
-                                                                                        <td>{{ poll.end_date }}</td>
-                                                                                        <td>{{ poll.question_count }}</td>
+                                                                                        <td>{{ item.item_name }}</td>
+                                                                                        <td>
+                                                                                        {% if item.item_image %}
+                                                                                            <img src="{{item.item_image.url}}" class="card-img-top img-fluid" style='width:60px; height: 60px'> 
+                                                                                        {% endif %}
+                                                                                        </td>
+                                                                                        <td>{{ item.item_amount }}</td>
+                                                                                        <td>{{ item.current_amount }}</td>
                                                                                         <td>
                                                                                             <a href="#">
                                                                                                 <div class="btn btn-warning">ลบ</div>
