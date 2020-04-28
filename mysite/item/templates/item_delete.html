@@ -83,8 +83,8 @@
                                                                                         <td>{{ item.item_amount }}</td>
                                                                                         <td>{{ item.current_amount }}</td>
                                                                                         <td>
-                                                                                            <a href="#">
-                                                                                                <div class="btn btn-warning">ลบ</div>
+                                                                                            <a href="{% url 'delete' item_id=item.id %}">
+                                                                                                <div class="btn btn-danger">ลบ</div>
                                                                                             </a>
                                                                                         </td>
                                                                                     </tr>

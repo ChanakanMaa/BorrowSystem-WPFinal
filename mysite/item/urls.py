@@ -6,7 +6,8 @@ from . import views
 urlpatterns = [
     path('', views.index, name='index'),
     path('create/', views.create, name='create'),
-    path('delete/', views.item_delete, name='item_delete'),
+    path('delete/item/', views.item_delete, name='item_delete'),
+    path('delete_item/delete/<int:item_id>', views.delete, name='delete'),
 ]
 
 if settings.DEBUG:

@@ -2,6 +2,7 @@ from builtins import object
 from fnmatch import filter
 from venv import create
 
+from astroid.protocols import objects
 # def upload_list(request):
 from astroid.scoped_nodes import objects
 from django.contrib.auth.decorators import login_required
@@ -52,7 +53,7 @@ def create(request):
 
     return render(request, 'item.html', {'form': form})
 
-
+@login_required
 def item_delete(request):
     form = ItemSearchForm(request.GET)
 
@@ -63,8 +64,14 @@ def item_delete(request):
     else:
         item_list = []
 
-    # item_list = Item.objects.all()
-    # context = {
-    #     'item_list': item_list,
-    # }
     return render(request, 'item_delete.html', {'form':form, 'item_list': item_list})
+
+
+@login_required
+def delete(request, item_id):
+    item = Item.objects.get(pk=item_id)
+    # print(item_id)
+    item.delete()
+    # item.save()
+
+    return redirect('item_delete')
