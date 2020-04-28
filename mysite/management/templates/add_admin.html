@@ -3,35 +3,10 @@
 {% load static %}
 <div class="container">
         <br><br><br><br><br><br>
-    <form method='POST' action='#'>
+    <form method='POST'>
     {% csrf_token %}
-        <button class="button btn btn-primary" type="submit" name="addcart" value="borrow">เพิ่มผู้ดูแล</button>
-        {% comment %} <table class="table" style="margin-top: 2%">
-            <thead>
-                <tr>
-                    <th scope="col">รูป</th>
-                    <th scope="col" style='text-align: center'>ชื่ออุปกรณ์</th>
-                    <th scope="col" style='text-align: center'>จำนวนที่มีทั้งหมด</th>
-                    <th scope="col" style='text-align: center'>จำนวนที่เหลือ</th>
-                    <th scope="col"></th>
-                </tr>
-            </thead>
-
-            <tbody>
-                <tr>
-                    <td>pic</td>
-                    <td style='text-align: center'>กรรไกร</td>
-                    <td style='text-align: center'>4</td>
-                    <td style='text-align: center'>4</td>
-                    <td style='text-align: center'>
-                        <a href="#">
-                            <div class="btn btn-primary" id="sub_id">ลบพัสดุ</div>
-                        </a>
-                    </td>
-                </tr>
-            </tbody>
-
-        </table> {% endcomment %}
+    {{ form.as_p }}
+        <button class="button btn btn-primary" type="submit">เพิ่มผู้ดูแล</button>
     </form>
     </div>
     <br><br>

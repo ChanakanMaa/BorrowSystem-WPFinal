@@ -40,7 +40,19 @@
                                                                     <div class="from-group container">
                                                                         <form action='{% url "create" %}' method='POST' enctype='multipart/form-data'>
                                                                         {% csrf_token %}
+                                                                        {% comment %} {{ form.non_field_errors }}
+{% for field in form %}
+<div class="form-group">
+    {{field.errors}}
+    <label for="{{field.id_for_label}}">{{field.label}}</label>
+    {{field}}
+</div>
+{% endfor %}
+<p>
+    <button class="btn btn-primary" type="submit">บันทึกข้อมูล</button>
+</p> {% endcomment %}
                                                                             <table class="table" style="margin-top: 2%">
+                                                                            {% comment %} {{ form.non_field_errors }} {% endcomment %}
                                                                                 {{form}}
                                                                             </table>
 
