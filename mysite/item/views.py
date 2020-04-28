@@ -7,7 +7,7 @@ from django.http import Http404, HttpResponse
 from django.shortcuts import HttpResponseRedirect, redirect, render
 from django.core.files.storage import FileSystemStorage
 
-from item.forms import ItemForm
+from item.forms import ItemForm, ItemSearchForm
 from item.models import Item
 
 
@@ -51,11 +51,13 @@ def create(request):
 
 
 def item_delete(request):
+    form = ItemSearchForm()
+
     item_list = Item.objects.all()
     context = {
         'item_list': item_list,
     }
-    return render(request, 'item_delete.html', context)
+    return render(request, 'item_delete.html', {'form':form})
 
 
 # def upload_list(request):

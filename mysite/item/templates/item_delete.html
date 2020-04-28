@@ -38,18 +38,56 @@
                                                             <div class="vc_panel-body">
                                                                 <div class="vc_border">
                                                                     <div class="from-group container">
-                                                                        <form action='{% url "create" %}' method='POST' enctype='multipart/form-data'>
+                                                                        {% comment %} <form action='{% url "create" %}' method='POST' enctype='multipart/form-data'>
                                                                         {% csrf_token %}
-                                                                            <table class="table" style="margin-top: 2%">
-                                                                                {{form}}
+                                                                        </form> {% endcomment %}
+                                                                        <div class="container">
+                                                                        <br/><br/>
+                                                                            <form class="form-inline" method="GET" action="{% url 'index' %}">
+                                                                                <h4 style='margin-right:5%'>{{ form.item_name.label }}</h4>
+                                                                                <div class='row'>
+                                                                                    <div class='col'>
+                                                                                        {% comment %} <h4>{{ form.item_name.label }}</h4> {% endcomment %}
+                                                                                        <label for="{{ form.item_name.id_for_label }}"></label>
+                                                                                        {{ form.item_name }}
+                                                                                        {{ form.errors }}
+                                                                                    </div>
+                                                                                    <div class='col'>
+                                                                                        <button type='submit' class='btn btn-primary ml-3'>ค้นหา</button>
+                                                                                    </div>
+                                                                                    {% comment %} <label for="search">ค้นหาอุปกรณ์:</label> {% endcomment %}
+                                                                                    {% comment %} <input type="text" class="form-control ml-3" id="search" 
+                                                                                    name="search" placeholder="Search" value="{{search}}"> {% endcomment %}
+                                                                                </div>
+                                                                            </form>
+                                                                            <br/><br/>
+                                                                            <table class="table">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th scope="col">ชื่ออุปกรณ์</th>
+                                                                                        <th scope="col">รูปอุปกรณ์</th>
+                                                                                        <th scope="col">จำนวนอุปกรณ์ทั้งหมด</th>
+                                                                                        <th scope="col">จำนวนอุปกรณ์ที่มีอยู่</th>
+                                                                                        <th scope="col"></th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                {% for poll in poll_list %}
+                                                                                    <tr>
+                                                                                        <td>{{ poll.title }}</td>
+                                                                                        <td>{{ poll.start_date }}</td>
+                                                                                        <td>{{ poll.end_date }}</td>
+                                                                                        <td>{{ poll.question_count }}</td>
+                                                                                        <td>
+                                                                                            <a href="#">
+                                                                                                <div class="btn btn-warning">ลบ</div>
+                                                                                            </a>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                {% endfor %}
+                                                                                </tbody>
                                                                             </table>
-
-                                                                            <div>
-                                                                                <button class="button btn btn-primary" type="submit" name="additem" value="create">
-                                                                                    ลบพัสดุ
-                                                                                </button>
-                                                                            </div>
-                                                                        </form>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
 
