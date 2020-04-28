@@ -23,7 +23,14 @@
             <h2>ตรวจสอบพัสดุที่ต้องการยืม</h2><br>
             {% if status == '01' %}
             <label style="color: red;"><i>ตรวจสอบจำนวนพัสดุอีกครั้ง</i></label>
+
             {% endif %}
+
+            {% for item in item %}
+            {{item.item_id.item_name}}
+            {{item.item_name}}
+            {% endfor %}
+
             {% for brit in borrow_item %}
             <div class="row">
                 <div class="col-md-12" v-for="blog in blogs" v-show="blog.show">

@@ -5,13 +5,12 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Borrow(models.Model):
-    student_id = models.ForeignKey(User, on_delete=models.PROTECT, related_name='request_by')
-    request_date = models.DateField(null=True)
+    student_id = models.ForeignKey(User, on_delete=models.PROTECT, related_name='request_by', null=True)
+    request_date = models.DateField(blank=True, null=True)
     request_time = models.CharField(max_length=8, blank=True, null=True)
-    borrow_date = models.DateField(null=True)
-    return_date = models.DateField(null=True)
+    borrow_date = models.DateField(blank=True, null=True)
+    return_date = models.DateField(blank=True, null=True)
     takeback_date = models.DateField(blank=True, null=True)
-
     IN_CART = '01'
     WAIT = '02'
     CONFIRMED = '03'
@@ -34,7 +33,6 @@ class Borrow(models.Model):
     fine = models.IntegerField(blank=True, null=True)
     def __int__(self):
         return self.id
-
 
 class Borrow_Item(models.Model):
     borrow_id = models.ForeignKey(Borrow, on_delete=models.PROTECT)
