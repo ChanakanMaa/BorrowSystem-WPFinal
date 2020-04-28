@@ -11,9 +11,6 @@ class AddadminForm(forms.Form):
     email = forms.EmailField(label='Enter email')
     password1 = forms.CharField(label='Enter password', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Confirm password', widget=forms.PasswordInput)
-    is_staff = forms.ChoiceField(label="เป็น staff หรือไม่", initial='', widget=forms.Select(), required=True, choices=((True, 'Yes'), (False, 'No')))
-    is_active = forms.ChoiceField(label="เป็น staff หรือไม่", initial='', widget=forms.Select(), required=True, choices=((True, 'Yes'), (False, 'No')))
-    is_superuser = forms.ChoiceField(label="เป็น staff หรือไม่", initial='', widget=forms.Select(), required=True, choices=((True, 'Yes'), (False, 'No')))
  
     def clean_username(self):
         username = self.cleaned_data['username'].lower()
@@ -39,7 +36,7 @@ class AddadminForm(forms.Form):
         return password2
  
     def save(self, commit=True):
-        user = User.objects.create_user(
+        user = User.objects.create_superuser(
             self.cleaned_data['username'],
             self.cleaned_data['email'],
             self.cleaned_data['password1']
