@@ -21,8 +21,7 @@ def add_cart(request):
         if 'item' in request.POST:
             print(request.POST)
             addcart = request.POST['addcart']
-            items = request.POST.get('item')
-            print(items)
+            items = request.POST.getlist('item')
 
             # if addcart == 'borrow':
             #     print('borrow')
@@ -32,7 +31,6 @@ def add_cart(request):
             if borrow:
                 for br in borrow:
                     borrow = Borrow.objects.get(id=br.id)
-                    print(br.id)
                     break
                 try:
                     for it in items:
