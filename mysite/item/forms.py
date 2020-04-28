@@ -12,7 +12,14 @@ class ItemForm(forms.Form):
     item_name.widget.attrs.update({'class': 'form-control'})
     item_amount.widget.attrs.update({'class': 'form-control'})
     current_amount.widget.attrs.update({'class': 'form-control'})
+
+    # self คือ instance จาก form
+    # def clean_item_amount(self):
+    #     data = self.cleaned_data[_item_amount"]
+        
+    #     return data
     
+
 
 class ItemSearchForm(forms.Form):
     item_name = forms.CharField(max_length=255, label='ค้นหาชื่ออุปกรณ์', required=False)

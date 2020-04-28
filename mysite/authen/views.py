@@ -27,6 +27,10 @@ def login(request):
         return render(request, template_name='login.html')
 
 
+def profile(request):
+    return render(request, 'profile.html')
+
+
 def log_out(request):
     auth.logout(request)
     return redirect('login')
