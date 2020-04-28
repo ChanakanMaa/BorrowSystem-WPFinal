@@ -19,14 +19,14 @@
                                             <div class="vc vc_general vc_spacing vc_color">
                                                 <div class="vc_tab-contain">
                                                     <ul class="vc_tab-list">
-                                                        <li class="vc_tab vc_active" style="background: #fff;" data-vc-tab>
+                                                        <li class="vc_tab" data-vc-tab>
                                                             <a href="{% url 'create' %}" class="vc">
-                                                                <span class="vc_title-text">เพิ่มอุปกรณ์</span>
+                                                                <span class="vc_title-text" style="color: #fff;">เพิ่มอุปกรณ์</span>
                                                             </a>
                                                         </li>
-                                                        <li class="vc_tab" data-vc-tab>
+                                                        <li class="vc_tab vc_active" style="background: #fff;" data-vc-tab>
                                                             <a href="{% url 'item_delete' %}" class="vc">
-                                                                <span class="vc_title-text" style="color: #fff;">ลบอุปกรณ์</span>
+                                                                <span class="vc_title-text">ลบอุปกรณ์</span>
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -46,7 +46,7 @@
 
                                                                             <div>
                                                                                 <button class="button btn btn-primary" type="submit" name="additem" value="create">
-                                                                                    เพิ่มพัสดุ
+                                                                                    ลบพัสดุ
                                                                                 </button>
                                                                             </div>
                                                                         </form>

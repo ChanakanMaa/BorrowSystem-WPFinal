@@ -50,7 +50,12 @@ def create(request):
     return render(request, 'item.html', {'form': form})
 
 
-# def item_list(request):
+def item_delete(request):
+    item_list = Item.objects.all()
+    context = {
+        'item_list': item_list,
+    }
+    return render(request, 'item_delete.html', context)
 
 
 # def upload_list(request):
