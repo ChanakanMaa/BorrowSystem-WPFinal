@@ -4,7 +4,8 @@ from django.conf.urls.static import static
 from . import views
 
 urlpatterns = [
-    path('', views.add_cart, name='add_cart'),
+    path('add_cart', views.add_cart, name='add_cart'),
+    path('cart/', views.cart, name='cart'),
 ]
 
 if settings.DEBUG:
