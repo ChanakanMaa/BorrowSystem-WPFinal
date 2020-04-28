@@ -15,8 +15,8 @@
     <a href="#" class="w3-bar-item w3-button"><b>ตะกร้า</b></a>
     <a href="#" class="w3-bar-item w3-button"><b>ประวัติการยืม/คืน</b></a>
     {% if user.is_staff %}
-      <a href="{% url 'manageItem' %}" class="w3-bar-item w3-button"><b>จัดการอุปกรณ์</b></a>
-      <a href="#" class="w3-bar-item w3-button"><b>เพิ่มผู้ดูแล</b></a>
+      <a href="{% url 'create' %}" class="w3-bar-item w3-button"><b>จัดการอุปกรณ์</b></a>
+      <a href="{% url 'add_admin' %}" class="w3-bar-item w3-button"><b>เพิ่มผู้ดูแล</b></a>
       <a href="#" class="w3-bar-item w3-button"><b>Dashboard</b></a>
     {% endif %}
     <a href="#" class="w3-bar-item w3-button" style='float: right;'><b>My Profile</b></a>

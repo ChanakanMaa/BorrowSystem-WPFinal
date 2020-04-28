@@ -11,3 +11,9 @@ def addItem(request):
     if not request.user.is_authenticated:
         return redirect('/')
     return render(request, 'manageItem.html')
+
+def addAdmin(request):
+    username = None
+    if not request.user.is_authenticated:
+        return redirect('/')
+    return render(request, 'add_admin.html')

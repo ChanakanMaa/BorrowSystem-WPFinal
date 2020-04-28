@@ -4,7 +4,7 @@
 
 <div id="app1" style='margin-top: 10%;'>
     <div class="container">
-        <form method='POST' action='#'>
+        <form method='POST' action='{% url "add_cart" %}'>
             {% csrf_token %}
             {% comment %} {% for message in messages %}
             <label style="color: red;"><i>message</i></label>

@@ -5,6 +5,7 @@ from . import views
 
 urlpatterns = [
     path('', views.addItem, name='manageItem'),
+    path('add_admin/', views.addAdmin, name='add_admin'),
 ]
 
 if settings.DEBUG:
