@@ -162,3 +162,7 @@ def delete_itemcart(request, id, item_id, slug):
         return redirect('index')
     if slug == 'borrow':
         return redirect('cart')
+
+
+def history(request):
+    return render(request, 'history.html')
