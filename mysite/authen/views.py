@@ -4,6 +4,7 @@ from django.contrib.auth import logout
 from django.contrib.auth.models import User, auth
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
+from django.contrib.auth.decorators import login_required, permission_required
 
 
 # Create your views here.
@@ -27,8 +28,29 @@ def login(request):
         return render(request, template_name='login.html')
 
 
+@login_required
 def profile(request):
     return render(request, 'profile.html')
+
+
+@login_required
+def change_password(request):
+    context = {}
+    if request.method == 'POST':
+        user = request.user
+        password1 = request.POST.get('password1')
+        password2 = request.POST.get('password2')
+        # check that the passwords match
+        if password1 == password2:
+            user.set_password(password1)
+            user.save()
+            
+            logout(request)
+            return redirect('login')
+        else:
+            context['error'] = 'Passwords do not match.'
+
+    return render(request, template_name='change_password.html', context=context)
 
 
 def log_out(request):

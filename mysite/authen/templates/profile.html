@@ -33,24 +33,18 @@
                                                             <div class="vc_panel-body">
                                                                 <div class="vc_border">
                                                                     <div class="from-group container">
-                                                                         ใส่เนื้อหาตรงนี้โลด
-                                                                         <div>ชื่อผู้ใช้งาน: admin</div>
-                                                                         <button class="button btn btn-primary" type="submit" name="additem" value="create">
-                                                                            เปลี่ยนรหัสผ่าน
-                                                                        </button>
-                                                                        {% comment %} <form action='{% url "create" %}' method='POST' enctype='multipart/form-data'>
-                                                                        {% csrf_token %}
-                                                                            <table class="table" style="margin-top: 2%">
-                                                                                {{form}}
-                                                                            </table>
 
-                                                                            <div>
-                                                                                <button class="button btn btn-primary" type="submit" name="additem" value="create">
-                                                                                    เพิ่มพัสดุ
-                                                                                </button>
-                                                                            </div>
-                                                                        </form> {% endcomment %}
+                                                                        <div>ชื่อผู้ใช้งาน: {{user.username}}</div>
+                                                                        <br/>
+
+                                                                        <a href="{% url 'change_password' %}">
+                                                                            <button class="button btn btn-primary" type="submit" name="change_password" value="change_password">
+                                                                                เปลี่ยนรหัสผ่าน
+                                                                            </button>
+                                                                        </a>
+
                                                                     </div>
+                                                        
                                                                 </div>
 
                                                             </div>

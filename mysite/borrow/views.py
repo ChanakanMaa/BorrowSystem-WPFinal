@@ -88,6 +88,7 @@ def cart(request):
     else:
         message = 'ไม่มีพัสดุที่เลือก'
         return render(request, 'cart.html', {'message': message})
+    
     item = Item.objects.all()
     print('borrow.id', borrow.id)
     status = '0'
@@ -149,3 +150,15 @@ def cart(request):
     print(rt_status)
     print(br)
     return render(request, 'cart.html', context)
+
+
+def delete_itemcart(request, id, item_id, slug):
+    borrow = Borrow.objects.get(id=id)
+    borrow_item = Borrow_Item.objects.filter(borrow_id=id, item_id=item_id)
+    borrow_item.delete()
+    count_brit = Borrow_Item.objects.filter(borrow_id=id).count()
+    if count_brit == 0:
+        borrow.delete()
+        return redirect('index')
+    if slug == 'borrow':
+        return redirect('cart')

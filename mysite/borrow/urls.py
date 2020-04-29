@@ -6,6 +6,7 @@ from . import views
 urlpatterns = [
     path('add_cart', views.add_cart, name='add_cart'),
     path('cart/', views.cart, name='cart'),
+    path('delete_itemcart/<id>/<item_id>/<slug>', views.delete_itemcart, name='delete_itemcart'),
 ]
 
 if settings.DEBUG:
