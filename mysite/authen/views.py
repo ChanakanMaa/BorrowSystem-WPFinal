@@ -37,20 +37,19 @@ def profile(request):
 def change_password(request):
     context = {}
     if request.method == 'POST':
-        user = request.user
+        username = request.user
         password1 = request.POST.get('password1')
         password2 = request.POST.get('password2')
-        # check that the passwords match
+
         if password1 == password2:
-            user.set_password(password1)
-            user.save()
-            
+            username.set_password(password1)
+            username.save()   
             logout(request)
             return redirect('login')
         else:
-            context['error'] = 'Passwords do not match.'
+            context['error'] = 'รหัสผ่านไม่ตรงกัน.'
 
-    return render(request, template_name='change_password.html', context=context)
+    return render(request, template_name='change_password.html' , context=context)
 
 
 def log_out(request):
